@@ -1,0 +1,15 @@
+@import 'node_modules/coffeekraken-sugar/index';
+@import 'node_modules/coffeekraken-s-form-component/index';
+@import '../../../index';
+
+@include s-setup(());
+@include s-init();
+@include s-classes();
+
+@include s-form-classes();
+
+@include s-autocomplete-classes();
+
+body {
+	padding: s-space(bigger);
+}

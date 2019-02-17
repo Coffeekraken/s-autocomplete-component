@@ -1,0 +1,101 @@
+/**
+ * @name    component
+ * description
+ *
+ * @example   html
+ * <!-- example here -->
+ *
+ * @author    Olivier Bossel <olivier.bossel@gmail.com>
+ */
+
+/**
+ * Print out the bare and style component css
+ * @param 	{List<Color>} 		[$color=default primary secondary] 		The colors to generate
+ */
+@mixin s-autocomplete-classes(
+  $colors: default primary secondary
+) {
+  @include s-autocomplete-classes-bare();
+  @include s-autocomplete-classes-style($colors);
+}
+
+/**
+ * Print out the bare component css
+ */
+@mixin s-autocomplete-classes-bare() {
+  @include s-component('s-autocomplete') {
+    #{s-component()} {
+
+    }
+    .#{s-component()}__results {
+
+    }
+    .#{s-component()}__result {
+      padding: s-lnf(padding-horizontal) s-lnf(padding-vertical);
+    }
+  }
+}
+
+/**
+ * Print out the style component css
+ * @param 	{List<Color>} 		[$color=default primary secondary] 		The colors to generate
+ */
+@mixin s-autocomplete-classes-style(
+  $colors: default primary secondary
+) {
+  @include s-component('s-autocomplete') {
+    @each $color in $colors {
+      $sel : '#{s-component()}[color="#{$color}"]';
+
+      @if $color == default {
+        $sel : "#{s-component()}";
+      }
+
+      #{$sel} {
+        @include s-depth(5);
+        background-color: white;
+
+        .#{s-component()}__loading {
+          text-align: center;
+          padding: s-lnf(padding-horizontal) s-lnf(padding-vertical);
+        }
+        .#{s-component()}__loader {
+          @include s-loader-bars(
+            $shape : rect,
+            $color : s-color($color),
+            $width : 0.2em,
+            $height : 0.6em,
+            $count : 5,
+            $gap : 0.2em,
+            $opacity : 1,
+            $a-opacity : null,
+            $a-duration : 1s,
+            $a-delay : 0s,
+            $a-near : 1,
+            $a-ease : ease-in-out,
+            $a-offset : 0.3em,
+            $a-direction : both,
+            $a-continuous : true
+          );
+          display: inline-block;
+          margin: 0 auto;
+        }
+
+        .#{s-component()}__result {
+          &:hover,
+          &:active,
+          &.active {
+						background: s-color($color);
+						color: white;
+          }
+        }
+
+        .#{s-component()}__search-result {
+					background:s-color($color);
+					color:white;
+				}
+
+      }
+    }
+  }
+}
