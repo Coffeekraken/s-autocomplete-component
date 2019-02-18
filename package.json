@@ -1,6 +1,6 @@
 {
   "name": "coffeekraken-s-autocomplete-component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easily create fully customizable autocomplete dropdown",
   "main": "dist/index.js",
   "homepage": "http://coffeekraken.io",

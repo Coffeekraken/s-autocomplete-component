@@ -2855,11 +2855,19 @@
  * @author 		Olivier Bossel <olivier.bossel@gmail.com>
  */
 /**
- * @name    component
- * description
+ * @name    SAutocompleteComponent
+ * Easily create fully customizable autocomplete dropdown
  *
  * @example   html
- * <!-- example here -->
+ * <input type="search" name="my-cool-input" placeholder="Keywords..." />
+ * <s-autocomplete for="my-cool-input" endpoint="//api.my-cool-domain.com/search">
+ *  <template>
+ *    <!-- this is a mustache template feeded with each results
+ *    sended back from your api in json format -->
+ *    <span class="something-cool">{{title}}</span>
+ *    <p class="something">{{body}}</p>
+ *  </template>
+ * </s-autocomplete>
  *
  * @author    Olivier Bossel <olivier.bossel@gmail.com>
  */
@@ -5262,7 +5270,7 @@ s-autocomplete .s-autocomplete__loader:before {
   height: 0.6em;
   content: '';
   display: block;
-  animation: bars-uda8c5bb8 1s ease-in-out 0s infinite;
+  animation: bars-u83104b2e 1s ease-in-out 0s infinite;
   box-shadow: #848e91 0.6em 0.5em 0 0, #848e91 1em 0.5em 0 0,
     #848e91 1.4em 0.5em 0 0, #848e91 1.8em 0.5em 0 0, #848e91 2.2em 0.5em 0 0,
     #848e91 0.6em 0.5em 0 0, #848e91 1em 0.5em 0 0, #848e91 1.4em 0.5em 0 0,
@@ -5271,7 +5279,7 @@ s-autocomplete .s-autocomplete__loader:before {
   transform-origin: 1.4em 0.5em;
 }
 
-@keyframes bars-uda8c5bb8 {
+@keyframes bars-u83104b2e {
   0% {
     box-shadow: #848e91 0.6em 0.2em 0 0, #848e91 1em 0.5em 0 0,
       #848e91 1.4em 0.5em 0 0, #848e91 1.8em 0.5em 0 0, #848e91 2.2em 0.5em 0 0,
@@ -5342,7 +5350,7 @@ s-autocomplete[color='primary'] .s-autocomplete__loader:before {
   height: 0.6em;
   content: '';
   display: block;
-  animation: bars-uf1a55a7d 1s ease-in-out 0s infinite;
+  animation: bars-u74cb3a92 1s ease-in-out 0s infinite;
   box-shadow: #f2bc2b 0.6em 0.5em 0 0, #f2bc2b 1em 0.5em 0 0,
     #f2bc2b 1.4em 0.5em 0 0, #f2bc2b 1.8em 0.5em 0 0, #f2bc2b 2.2em 0.5em 0 0,
     #f2bc2b 0.6em 0.5em 0 0, #f2bc2b 1em 0.5em 0 0, #f2bc2b 1.4em 0.5em 0 0,
@@ -5351,7 +5359,7 @@ s-autocomplete[color='primary'] .s-autocomplete__loader:before {
   transform-origin: 1.4em 0.5em;
 }
 
-@keyframes bars-uf1a55a7d {
+@keyframes bars-u74cb3a92 {
   0% {
     box-shadow: #f2bc2b 0.6em 0.2em 0 0, #f2bc2b 1em 0.5em 0 0,
       #f2bc2b 1.4em 0.5em 0 0, #f2bc2b 1.8em 0.5em 0 0, #f2bc2b 2.2em 0.5em 0 0,
@@ -5422,7 +5430,7 @@ s-autocomplete[color='secondary'] .s-autocomplete__loader:before {
   height: 0.6em;
   content: '';
   display: block;
-  animation: bars-uba74e9c2 1s ease-in-out 0s infinite;
+  animation: bars-u193ca664 1s ease-in-out 0s infinite;
   box-shadow: #2b3438 0.6em 0.5em 0 0, #2b3438 1em 0.5em 0 0,
     #2b3438 1.4em 0.5em 0 0, #2b3438 1.8em 0.5em 0 0, #2b3438 2.2em 0.5em 0 0,
     #2b3438 0.6em 0.5em 0 0, #2b3438 1em 0.5em 0 0, #2b3438 1.4em 0.5em 0 0,
@@ -5431,7 +5439,7 @@ s-autocomplete[color='secondary'] .s-autocomplete__loader:before {
   transform-origin: 1.4em 0.5em;
 }
 
-@keyframes bars-uba74e9c2 {
+@keyframes bars-u193ca664 {
   0% {
     box-shadow: #2b3438 0.6em 0.2em 0 0, #2b3438 1em 0.5em 0 0,
       #2b3438 1.4em 0.5em 0 0, #2b3438 1.8em 0.5em 0 0, #2b3438 2.2em 0.5em 0 0,
