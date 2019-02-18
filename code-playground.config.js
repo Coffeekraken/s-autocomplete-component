@@ -20,9 +20,11 @@ module.exports = {
       language: 'html',
       data: `
         <input type="search" name="keywords" placeholder="Keywords..." class="form-input" />
-        <s-autocomplete for="keywords" endpoint="demo/data/mock.json">
-          <span class="firstname" s-autocomplete-value="{{email}}">{{first_name}}</span> <span class="lastname">{{last_name}}</span>
-          <p class="p">{{email}}</p>
+        <s-autocomplete for="keywords" endpoint="demo/data/mock.json" open-oon-focus min-length-for-search="0">
+          <template>
+            <span class="firstname" s-autocomplete-value="{{email}}">{{first_name}}</span> <span class="lastname">{{last_name}}</span>
+            <p class="p">{{email}}</p>
+          </template>
         </s-autocomplete>
         <p class="p m-t">
           In this demo, the filtering does not work cause it's attached to a plain JSON backend...

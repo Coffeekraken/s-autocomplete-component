@@ -2,13 +2,9 @@
 
 Easily create fully customizable autocomplete dropdown
 
-
 Author : Olivier Bossel [olivier.bossel@gmail.com](mailto:olivier.bossel@gmail.com) [https://olivierbossel.com](https://olivierbossel.com)
 
 Extends **STemplateComponent**
-
-
-
 
 ## Attributes
 
@@ -23,7 +19,6 @@ Type : **{ [String](https://developer.mozilla.org/fr/docs/Web/JavaScript/Referen
 
 Default : **null**
 
-
 ### endpoint
 
 Specify the endpoint to use for search and get back autocomplete values
@@ -32,17 +27,15 @@ Type : **{ [String](https://developer.mozilla.org/fr/docs/Web/JavaScript/Referen
 
 Default : **null**
 
-
 ### openOnFocus
 
 Specify if the autocomplete has to open itself on input focus
 
 Type : **{ [Boolean](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Boolean) }**
 
-Default : **true**
+Default : **false**
 
-
-### debounce
+### inputDebounce
 
 Specify how many times to wait between the user input and the request to the endpoint in ms
 
@@ -50,6 +43,13 @@ Type : **{ Integer }**
 
 Default : **500**
 
+### queryStringParam
+
+Specify the query string search param name
+
+Type : **{ [String](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String) }**
+
+Default : **q**
 
 ### minLengthForSearch
 
@@ -57,8 +57,7 @@ Specify how many characters are needed before trigger a search request on the en
 
 Type : **{ Integer }**
 
-Default : **0**
-
+Default : **1**
 
 ### autoWidth
 
@@ -68,7 +67,6 @@ Type : **{ [Boolean](https://developer.mozilla.org/fr/docs/Web/JavaScript/Refere
 
 Default : **true**
 
-
 ### screenMarginTop
 
 Specify the margin in pixels to keep between the select dropdown and the window top corner
@@ -76,7 +74,6 @@ Specify the margin in pixels to keep between the select dropdown and the window 
 Type : **{ Integer }**
 
 Default : **50**
-
 
 ### screenMarginBottom
 
@@ -86,7 +83,6 @@ Type : **{ Integer }**
 
 Default : **50**
 
-
 ### dropupLimit
 
 Specify the limit height under which to set the select as a dropup
@@ -94,7 +90,6 @@ Specify the limit height under which to set the select as a dropup
 Type : **{ [Number](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number) }**
 
 Default : **200**
-
 
 ### offset
 
@@ -104,7 +99,6 @@ Type : **{ Integer }**
 
 Default : **1**
 
-
 ### onChoose
 
 When a result has been chosen. The chosen result object will be passed as a parameter
@@ -113,10 +107,15 @@ Type : **{ [Function](https://developer.mozilla.org/fr/docs/Web/JavaScript/Refer
 
 Default : **null**
 
+### onSearch
 
+When a search query has been made. The query string and the search response will be passed as parameters
+
+Type : **{ [Function](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Function) }**
+
+Default : **null**
 
 ## Properties
-
 
 ### results
 
@@ -126,7 +125,6 @@ Type : **{ [Array](https://developer.mozilla.org/fr/docs/Web/JavaScript/Referenc
 
 Default : **[]**
 
-
 ### selectedResultIdx
 
 Store the selected result idx
@@ -134,7 +132,6 @@ Store the selected result idx
 Type : **{ Integer }**
 
 Default : **null**
-
 
 ### isOpened
 
@@ -144,7 +141,6 @@ Type : **{ [Boolean](https://developer.mozilla.org/fr/docs/Web/JavaScript/Refere
 
 Default : **false**
 
-
 ### isLoading
 
 Store the loading state of the autocomplete
@@ -153,9 +149,7 @@ Type : **{ [Boolean](https://developer.mozilla.org/fr/docs/Web/JavaScript/Refere
 
 Default : **false**
 
-
 ## Methods
-
 
 ### defaultState
 
@@ -165,22 +159,19 @@ Default state
 
 **Static**
 
-
 ### open
 
 Open the autocomplete with an optional keywords value
 
-
 #### Parameters
-Name  |  Type  |  Description  |  Status  |  Default
-------------  |  ------------  |  ------------  |  ------------  |  ------------
-keywords  |  **{ [String](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String) }**  |  Some keywords to search  |  required  |
 
+| Name     | Type                                                                                                   | Description             | Status   | Default |
+| -------- | ------------------------------------------------------------------------------------------------------ | ----------------------- | -------- | ------- |
+| keywords | **{ [String](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String) }** | Some keywords to search | required |
 
 ### close
 
 Close the autocomplete
-
 
 ### isOpened
 
@@ -188,9 +179,7 @@ Check if the autocomplete is opened or not
 
 Return **{ [Boolean](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Boolean) }** true if opened, false if not
 
-
 ## Events
-
 
 ### chosen
 

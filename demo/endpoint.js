@@ -7,17 +7,17 @@ const app = express()
 app.use(cors())
 
 app.get('/', (req, res, next) => {
-  const keywords = req.query.keywords ? req.query.keywords.toLowerCase() : ''
-  if (!keywords) {
+  const query = req.query.q ? req.query.q.toLowerCase() : ''
+  if (!query) {
     res.json(json)
   } else {
     setTimeout(() => {
       const newJson = json.filter(j => {
         return (
-          j.first_name.toLowerCase().match(keywords) ||
-          j.last_name.toLowerCase().match(keywords) ||
-          j.email.toLowerCase().match(keywords) ||
-          j.gender.toLowerCase().match(keywords)
+          j.first_name.toLowerCase().match(query) ||
+          j.last_name.toLowerCase().match(query) ||
+          j.email.toLowerCase().match(query) ||
+          j.gender.toLowerCase().match(query)
         )
       })
       res.json(newJson)
