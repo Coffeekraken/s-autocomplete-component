@@ -462,6 +462,8 @@ export default class SAutocompleteComponent extends STemplateComponent {
       `[idx="${this.state.selectedResultIdx}"]`
     )
 
+    console.log('selectedJson', selectedJson)
+
     // try to get the value.
     // 1. from the dom element in the "s-autocomplete-value" attribute
     // 2. from the json in the "value" property
@@ -699,7 +701,9 @@ export default class SAutocompleteComponent extends STemplateComponent {
     // remove the active class
     this.classList.remove('active')
     // reset some variables
-    this.state.results = []
+    setTimeout(() => {
+      this.state.results = []
+    })
     this.state.selectedResultIdx = null
   }
 

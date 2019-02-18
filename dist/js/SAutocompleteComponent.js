@@ -594,7 +594,8 @@ var SAutocompleteComponent =
             var selectedJson = this.state.results[this.state.selectedResultIdx]
             var $selectedResult = this.querySelector(
               '[idx="'.concat(this.state.selectedResultIdx, '"]')
-            ) // try to get the value.
+            )
+            console.log('selectedJson', selectedJson) // try to get the value.
             // 1. from the dom element in the "s-autocomplete-value" attribute
             // 2. from the json in the "value" property
             // 3. finally, from the html using innerHTML and striptags
@@ -911,12 +912,16 @@ var SAutocompleteComponent =
         {
           key: 'close',
           value: function close() {
+            var _this5 = this
+
             // set the isOpened flag
             this.state.isOpened = false // remove the active class
 
             this.classList.remove('active') // reset some variables
 
-            this.state.results = []
+            setTimeout(function() {
+              _this5.state.results = []
+            })
             this.state.selectedResultIdx = null
           }
           /**
