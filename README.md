@@ -61,7 +61,7 @@ npm install coffeekraken-s-autocomplete-component --save
 First, import the component into your javascript file like so:
 
 ```js
-import SAutocompleteComponent from "coffeekraken-s-autocomplete-component"
+import SAutocompleteComponent from 'coffeekraken-s-autocomplete-component'
 ```
 
 Then simply use it inside your html like so:
@@ -69,10 +69,12 @@ Then simply use it inside your html like so:
 ```html
 <input type="search" name="my-cool-input" placeholder="Keywords..." />
 <s-autocomplete for="my-cool-input" endpoint="//api.my-cool-domain.com/search">
-  <!-- this is a mustache template feeded with each results
-  sended back from your api in json format -->
-  <span class="something-cool">{{title}}</span>
-  <p class="something">{{body}}</p>
+  <template>
+    <!-- this is a mustache template feeded with each results
+    sended back from your api in json format -->
+    <span class="something-cool">{{title}}</span>
+    <p class="something">{{body}}</p>
+  </template>
 </s-autocomplete>
 ```
 
@@ -82,20 +84,23 @@ Finally, create the endpoint that you have specified for your autocomplete.
 This endpoint has to return an array of objects in JSON, something like this:
 
 ```json
-[{
-  "title": "Hello",
-  "body": "Vestibulum sollicitudin sed elit sit."
-}, {
-  "title": "World",
-  "body": "In facilisis nulla sit amet."
-}]
+[
+  {
+    "title": "Hello",
+    "body": "Vestibulum sollicitudin sed elit sit."
+  },
+  {
+    "title": "World",
+    "body": "In facilisis nulla sit amet."
+  }
+]
 ```
 
-Assuming that the endpoint is `//api.my-cool-domain.com/search`, and the keyword fileld in the target input is `hello`, the called endpoint will be:
+Assuming that the endpoint is `//api.my-cool-domain.com/search`, and the query filled in the target input is `hello`, the called endpoint will be:
 
-- `//api.my-cool-domain.com/search?keywords=hello`
+- `//api.my-cool-domain.com/search?q=hello`
 
-You'll have all you need to filter the results in your backend and return only what fit to the keywords back.
+You'll have all you need to filter the results in your backend and return only what fit to the query back.
 
 #### Styles
 
@@ -107,12 +112,11 @@ Then, import and generate the autocomplete classes:
 
 ```scss
 @import 'node_modules/coffeekraken-s-autocomplete-component/index';
-@include s-autocomplete-classes(
-  $colors: default primary secondary
-);
+@include s-autocomplete-classes($colors: default primary secondary);
 ```
 
 <a id="readme-value"></a>
+
 ## Set the input target value
 
 Your autocomplete can have a complexe display that cannot fit inside an `input` tag. To attach a simple text value that will populate the target `input`, you have 3 options:
@@ -126,10 +130,14 @@ Here's the first solution example:
 ```html
 <input type="search" name="my-cool-input" placeholder="Keywords..." />
 <s-autocomplete for="my-cool-input" endpoint="//api.my-cool-domain.com/search">
-  <!-- this is a mustache template feeded with each results
-  sended back from your api in json format -->
-  <span class="something-cool" s-autocomplete-value="{{title}}">{{title}}</span>
-  <p class="something">{{body}}</p>
+  <template>
+    <!-- this is a mustache template feeded with each results
+    sended back from your api in json format -->
+    <span class="something-cool" s-autocomplete-value="{{title}}"
+      >{{title}}</span
+    >
+    <p class="something">{{body}}</p>
+  </template>
 </s-autocomplete>
 ```
 
@@ -139,7 +147,7 @@ Here's the first solution example:
 
 | <img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/edge.png" alt="IE / Edge" width="16px" height="16px" /></br>IE / Edge | <img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/firefox.png" alt="Firefox" width="16px" height="16px" /></br>Firefox | <img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/chrome.png" alt="Chrome" width="16px" height="16px" /></br>Chrome | <img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/safari.png" alt="Safari" width="16px" height="16px" /></br>Safari |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \*IE11+                                                                                                                                                              | last 2 versions                                                                                                                                                   | last 2 versions                                                                                                                                                | last 2 versions                                                                                                                                                |
+| \*IE11+                                                                                                                                                            | last 2 versions                                                                                                                                                   | last 2 versions                                                                                                                                                | last 2 versions                                                                                                                                                |
 
 - This component use the `Proxy` feature that is not natively supported by IE11. You'll need to load a polyfill in order to make it work properly.
 
@@ -153,8 +161,7 @@ Here's the first solution example:
 
 This package uses some code linting rules. Here's the list:
 
-1. [StandardJS](https://standardjs.com/) for javascript files
-2. [Stylelint](https://github.com/stylelint/stylelint) with [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard) for `scss` files
+1. [ESLint](https://eslint.org/) for javascript files
 
 > Your commits will not been accepted if the code style is not respected!
 

@@ -1,83 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<link rel="stylesheet" href="dist/css/style.css" />
-</head>
-<body>
+  <head>
+    <link rel="stylesheet" href="dist/css/style.css" />
+  </head>
+  <body>
+    <input
+      type="search"
+      name="keywords1"
+      placeholder="Keywords..."
+      class="form-input m-b"
+    />
+    <s-autocomplete
+      for="keywords1"
+      endpoint="//localhost:8888"
+      color="primary"
+      open-on-focus
+      min-length-for-search="0"
+    >
+      <template>
+        <span class="firstname" s-autocomplete-value="{{email}}"
+          >{{first_name}}</span
+        >
+        <span class="lastname">{{last_name}}</span>
+        <p class="p">{{email}}</p>
+      </template>
+    </s-autocomplete>
 
-  <input type="search" name="keywords1" placeholder="Keywords..." class="form-input" />
-  <s-autocomplete for="keywords1" endpoint="//localhost:8888" color="primary">
-    <span class="firstname" s-autocomplete-value="{{email}}">{{first_name}}</span> <span class="lastname">{{last_name}}</span>
-    <p class="p">{{email}}</p>
-  </s-autocomplete>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
 
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
+    <input
+      type="search"
+      name="keywords2"
+      placeholder="Keywords..."
+      class="form-input m-b"
+    />
+    <s-autocomplete
+      for="keywords2"
+      endpoint="//localhost:8888"
+      color="secondary"
+    >
+      <template>
+        <span class="firstname" s-autocomplete-value="{{email}}"
+          >{{first_name}}</span
+        >
+        <span class="lastname">{{last_name}}</span>
+        <p class="p">{{email}}</p>
+      </template>
+    </s-autocomplete>
 
-  <input type="search" name="keywords2" placeholder="Keywords..." class="form-input" />
-  <s-autocomplete for="keywords2" endpoint="//localhost:8888" color="secondary">
-    <span class="firstname" s-autocomplete-value="{{email}}">{{first_name}}</span> <span class="lastname">{{last_name}}</span>
-    <p class="p">{{email}}</p>
-  </s-autocomplete>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
 
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
+    <input
+      type="search"
+      name="keywords"
+      placeholder="Keywords..."
+      class="form-input m-b"
+    />
+    <s-autocomplete for="keywords" endpoint="//localhost:8888">
+      <template>
+        <span class="firstname" s-autocomplete-value="{{email}}"
+          >{{first_name}}</span
+        >
+        <span class="lastname">{{last_name}}</span>
+        <p class="p">{{email}}</p>
+      </template>
+    </s-autocomplete>
 
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
+    <p class="p m-b">
+      Quisque quis condimentum justo, in finibus odio. Interdum et malesuada
+      fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id
+      sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu
+      bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis
+      metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac
+      ultrices nisl, et finibus orci. Proin luctus congue efficitur.
+    </p>
 
-  <input type="search" name="keywords" placeholder="Keywords..." class="form-input" />
-  <s-autocomplete for="keywords" endpoint="//localhost:8888">
-    <span class="firstname" s-autocomplete-value="{{email}}">{{first_name}}</span> <span class="lastname">{{last_name}}</span>
-    <p class="p">{{email}}</p>
-  </s-autocomplete>
-
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-  <p class="p m-b">
-    Quisque quis condimentum justo, in finibus odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis varius arcu urna, id sollicitudin nunc facilisis quis. Donec aliquet venenatis elit eu bibendum. Pellentesque ultricies ac justo quis pulvinar. Nam lobortis metus sed arcu vulputate, ut vestibulum turpis eleifend. Aenean ac ultrices nisl, et finibus orci. Proin luctus congue efficitur.
-  </p>
-
-	<script src="dist/js/app.js"></script>
-</body>
+    <script src="dist/js/app.js"></script>
+  </body>
 </html>

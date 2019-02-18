@@ -53,21 +53,28 @@ export default class SAutocompleteComponent extends STemplateComponent {
        * @prop
        * @type    {Boolean}
        */
-      openOnFocus: true,
+      openOnFocus: false,
 
       /**
        * Specify how many times to wait between the user input and the request to the endpoint in ms
        * @prop
        * @type    {Integer}
        */
-      debounce: 500,
+      inputDebounce: 500,
+
+      /**
+       * Specify the query string search param name
+       * @prop
+       * @type    {String}
+       */
+      queryStringParam: 'q',
 
       /**
        * Specify how many characters are needed before trigger a search request on the endpoint
        * @prop
        * @type    {Integer}
        */
-      minLengthForSearch: 0,
+      minLengthForSearch: 1,
 
       /**
        * Specify if the autocomplete width has to match as best the target input width
@@ -109,7 +116,14 @@ export default class SAutocompleteComponent extends STemplateComponent {
        * @prop
        * @type    {Function}
        */
-      onChoose: null
+      onChoose: null,
+
+      /**
+       * When a search query has been made. The query string and the search response will be passed as parameters
+       * @prop
+       * @type    {Function}
+       */
+      onSearch: null
     }
   }
 
@@ -223,7 +237,10 @@ export default class SAutocompleteComponent extends STemplateComponent {
     super.componentMount()
 
     // get the template html from component itself
-    this._htmlTemplate = this.innerHTML
+    const $templateChild = this.querySelector('template')
+    this._htmlTemplate = $templateChild
+      ? $templateChild.innerHTML
+      : this.innerHTML
     this.innerHTML = ''
 
     // add some attributes to the target input
@@ -232,7 +249,7 @@ export default class SAutocompleteComponent extends STemplateComponent {
     // prepare the search function wrapped in the debounce
     const searchDebouncedFn = debounce(
       this._search.bind(this),
-      this.props.debounce
+      this.props.inputDebounce
     )
 
     // listen for keydown
@@ -267,17 +284,19 @@ export default class SAutocompleteComponent extends STemplateComponent {
           e.preventDefault()
           // close the autocomplete
           this._forceClose()
+          break
+        default:
       }
     })
 
     // listen for scroll
-    this._removeScrollHandler = addEventListener(window, 'scroll', e => {
+    this._removeScrollHandler = addEventListener(window, 'scroll', () => {
       // set size and position
       this._setSizeAndPosition()
     })
 
     // lsiten for resize
-    this._removeResizeHandler = addEventListener(window, 'resize', e => {
+    this._removeResizeHandler = addEventListener(window, 'resize', () => {
       // set size and position
       this._setSizeAndPosition(true)
     })
@@ -286,7 +305,7 @@ export default class SAutocompleteComponent extends STemplateComponent {
     this._removeFocusHandler = addEventListener(
       this._$targetInput,
       'focus',
-      e => {
+      () => {
         if (this.props.openOnFocus) {
           // open the autocomplete
           this._search(this._$targetInput.value)
@@ -299,7 +318,7 @@ export default class SAutocompleteComponent extends STemplateComponent {
     this._removeBlurHandler = addEventListener(
       this._$targetInput,
       'blur',
-      e => {
+      () => {
         let closeTimeout = 0
 
         // check if the mouse if hover the autocomplete
@@ -318,7 +337,7 @@ export default class SAutocompleteComponent extends STemplateComponent {
     this._removeTargetClickHandler = addEventListener(
       this._$targetInput,
       'click',
-      e => {
+      () => {
         if (this.props.openOnFocus) {
           // open the autocomplete
           this._search(this._$targetInput.value)
@@ -332,14 +351,6 @@ export default class SAutocompleteComponent extends STemplateComponent {
       this._$targetInput,
       'input',
       e => {
-        // if the input is empty, reset the results
-        if (
-          e.target.value &&
-          e.target.value.length < this.props.minLengthForSearch
-        ) {
-          this.state.results = []
-          return
-        }
         // make the search
         searchDebouncedFn(e.target.value)
         // open the autocomplete
@@ -385,8 +396,8 @@ export default class SAutocompleteComponent extends STemplateComponent {
   render() {
     if (this.state.isOpened) {
       // check if we find the text in the option
-      let regexp = new RegExp(
-        '(' + this._$targetInput.value + ')(?!([^<]+)?>)',
+      const regexp = new RegExp(
+        `(${this._$targetInput.value})(?!([^<]+)?>)`,
         'gi'
       )
 
@@ -403,7 +414,7 @@ export default class SAutocompleteComponent extends STemplateComponent {
               <li
                 key={result.id || idx}
                 idx={idx}
-                onClick={e => this._resultClickHandler(idx)}
+                onClick={() => this._resultClickHandler(idx)}
                 className={`${this.componentNameDash}__result ${
                   idx === this.state.selectedResultIdx ? 'active' : ''
                 }`}
@@ -464,7 +475,7 @@ export default class SAutocompleteComponent extends STemplateComponent {
         `${this.componentNameDash}-value`
       )
     } else if (selectedJson.value) {
-      value = selectedJson.value
+      value = selectedJson.value.toString()
     } else {
       value = striptags($selectedResult.innerHTML)
     }
@@ -482,7 +493,7 @@ export default class SAutocompleteComponent extends STemplateComponent {
     dispatchEvent(this, 'chosen', selectedJson)
 
     // onChoose property
-    this.props.onChoose && this.props.onChoose(selectedJson)
+    if (this.props.onChoose) this.props.onChoose(selectedJson)
 
     // close the autocomplete
     if (this.isOpened()) this._forceClose()
@@ -604,20 +615,23 @@ export default class SAutocompleteComponent extends STemplateComponent {
             this.style.width = `${targetInputWidth}px`
           }
         })
-      } else {
-        if (this.offsetWidth < targetInputWidth) {
-          this.style.width = `${targetInputWidth}px`
-        }
+      } else if (this.offsetWidth < targetInputWidth) {
+        this.style.width = `${targetInputWidth}px`
       }
     }
   }
 
   /**
    * Process to the search on the data-source using the passed value
-   * @param    {String}    keywords    The keywords to make the search
+   * @param    {String}    query    The query to make the search
    * @return    {Promise}    A promise with the search result as value
    */
-  async _search(keywords) {
+  async _search(query) {
+    // if the input is empty, reset the results
+    if (query.length < this.props.minLengthForSearch) {
+      this.state.results = []
+      return
+    }
     // reset some variables
     this.state.selectedResultIdx = null
     // add the state class
@@ -625,20 +639,23 @@ export default class SAutocompleteComponent extends STemplateComponent {
     // set the state loading
     this.state.isLoading = true
     // check if we have the value in cache
-    if (this._cache[keywords]) {
-      this.state.results = this._cache[keywords]
+    if (this._cache[query]) {
+      this.state.results = this._cache[query]
     } else {
       // make the search on the endpoint
       const response = await axios.get(this.props.endpoint, {
         params: {
-          keywords
+          [this.props.queryStringParam]: query
         }
       })
       // save in cache the results
-      this._cache[keywords] = response.data
+      this._cache[query] = response.data
       // save the results in the state
       this.state.results = response.data
     }
+    // onSearch prop
+    if (this.props.onSearch)
+      this.props.onSearch(query, JSON.parse(JSON.stringify(this.state.results)))
     // remove the state class
     this.classList.remove('loading')
     // set the state loading
@@ -661,6 +678,10 @@ export default class SAutocompleteComponent extends STemplateComponent {
    * @param    {String}    keywords    Some keywords to search
    */
   open() {
+    // if the input is empty, reset the results
+    if (this._$targetInput.value.length < this.props.minLengthForSearch) {
+      return
+    }
     // open the autocomplete
     this.state.isOpened = true
     // add the active class

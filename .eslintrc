@@ -2,7 +2,13 @@
   "extends": ["airbnb","prettier"],
   "rules": {
     "semi": ["error","never"],
-    "import/newline-after-import": "off"
+    "import/newline-after-import": "off",
+    "no-underscore-dangle": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "react/no-danger": "off"
   },
   "env": {
     "browser": true,
